@@ -117,7 +117,7 @@ jobs:
         cd ..
         
         # Create summary with custom title
-        echo '{"reportGeneratedTime":"","reportGenerationTime":0,"reportTitle":"CS2103DE Software Engineering iP Code Dashboard"}' > deploy/summary.json
+        echo '{"reportGeneratedTime":"2024-01-12T00:00:00+08:00","reportGenerationTime":"0","reportTitle":"CS2103DE Software Engineering iP Code Dashboard","repoSenseVersion":"2.8"}' > deploy/summary.json
     
     - name: List deployment files
       run: |
