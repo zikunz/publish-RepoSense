@@ -1,2 +1,4 @@
 Repository's Location,Branch,File formats,Find Previous Authors,Ignore Glob List,Ignore standalone config,Ignore Commits List,Ignore Authors List,Shallow Cloning,File Size Limit,Ignore File Size Limit,Skip Ignored File Analysis
-https://github.com/reposense/RepoSense.git,master,,,,,,,,,,
+https://github.com/zikunz/chatbot.git,master,java;md;txt,yes,,yes,,,,,,
+https://github.com/Cocokkkk/ip.git,master,java;md;txt,yes,,yes,,,,,,
+https://github.com/nus-cs2103-AY2425S1/ip.git,master,java;md;txt,yes,,yes,,,,,,

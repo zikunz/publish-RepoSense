@@ -1,0 +1,2 @@
+Repository's Location,Branch,File formats,Find Previous Authors,Ignore Glob List,Ignore standalone config
+https://github.com/your-org/your-repo.git,master,java;js;py;cpp,yes,test/**;temp/**,yes 
