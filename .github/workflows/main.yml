@@ -54,7 +54,7 @@ jobs:
           --config ./configs \
           --since 01/01/2020 \
           --until 31/12/2024 \
-          --formats "java md txt" \
+          --formats java --formats md --formats txt \
           --timezone UTC+08 \
           --output ./reposense-report \
           --view
