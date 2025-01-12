@@ -29,12 +29,20 @@ jobs:
         chmod +x get-reposense.py
         chmod +x run.sh
     
+    - name: Setup assets
+      run: |
+        mkdir -p assets
+        cp title.md assets/
+        cp favicon.ico assets/
+    
     - name: Show workspace
       run: |
         pwd
         ls -la
         echo "=== Config Directory ==="
         ls -la configs/
+        echo "=== Assets Directory ==="
+        ls -la assets/
     
     - name: Download RepoSense
       run: |
@@ -57,7 +65,7 @@ jobs:
           --formats java --formats md --formats txt \
           --timezone UTC+08 \
           --output reposense-report \
-          --assets ./assets
+          --assets assets
         
         # Show report directory contents
         echo "=== Report Directory After Generation ==="
@@ -92,7 +100,7 @@ jobs:
         
         # Copy required files
         cp -r reposense-report/* deploy/ || echo "Warning: No report files to copy"
-        cp -r fonts js assets deploy/
+        cp -r fonts js deploy/
         cp .nojekyll favicon.ico index.html title.md deploy/
         
         # Create logs directory
