@@ -44,7 +44,7 @@ jobs:
     - name: Generate report
       run: |
         set -x  # Enable debug output
-        mkdir -p reposense-report
+        rm -rf reposense-report
         
         # Show Java version
         java -version
@@ -56,12 +56,17 @@ jobs:
           --until 31/12/2024 \
           --formats java --formats md --formats txt \
           --timezone UTC+08 \
-          --output ./reposense-report \
-          --view
+          --output reposense-report
         
         # Show report directory contents
         echo "=== Report Directory After Generation ==="
         ls -la reposense-report/
+        
+        # Fix nested directory if it exists
+        if [ -d "reposense-report/reposense-report" ]; then
+          mv reposense-report/reposense-report/* reposense-report/
+          rm -rf reposense-report/reposense-report
+        fi
     
     - name: Check report generation
       run: |
