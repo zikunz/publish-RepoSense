@@ -171,8 +171,8 @@ jobs:
             }
           ],
           "errorSet": [],
-          "sinceDate": "2021-01-01",
-          "untilDate": "2023-12-31",
+          "sinceDate": "2021-01-11",
+          "untilDate": "2023-06-10",
           "isSinceDateProvided": true,
           "isUntilDateProvided": true,
           "supportedDomainUrlMap": {

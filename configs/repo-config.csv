@@ -1,4 +1,8 @@
-Repository's Location,Branch,File formats,Find Previous Authors,Ignore Glob List,Ignore standalone config,Ignore Commits List,Ignore Authors List,Shallow Cloning,File Size Limit,Ignore File Size Limit,Skip Ignored File Analysis
-https://github.com/zikunz/chatbot.git,master,java,yes,,yes,,,,,,
-https://github.com/Cocokkkk/ip.git,master,java,yes,,yes,,,,,,
-https://github.com/nus-cs2103-AY2425S1/ip.git,master,java,yes,,yes,,,,,,
+Repository's Location,Branch,File formats,Find Previous Authors,Ignore Glob List,Ignore standalone config
+https://github.com/zikunz/chatbot.git,master,java;md;txt,yes,,yes
+https://github.com/Cocokkkk/ip.git,master,java;md;txt,yes,,yes
+https://github.com/jiangqx0225/ip.git,master,java;md;txt,yes,,yes
+https://github.com/beaniestanley/ip.git,master,java;md;txt,yes,,yes
+https://github.com/cswbibibi/ip.git,master,java;md;txt,yes,,yes
+https://github.com/fangxinjia0203/ip.git,master,java;md;txt,yes,,yes
+https://github.com/RainyCodeWizard/ip.git,master,java;md;txt,yes,,yes
