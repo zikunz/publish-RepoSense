@@ -212,6 +212,39 @@ jobs:
               "branch": "master",
               "displayName": "RainyCodeWizard/ip[master]",
               "outputFolderName": "RainyCodeWizard_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/8kdesign/ip.git",
+                "repoName": "ip",
+                "organization": "8kdesign",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "8kdesign/ip[master]",
+              "outputFolderName": "8kdesign_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/chenling1022/ip.git",
+                "repoName": "ip",
+                "organization": "chenling1022",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "chenling1022/ip[master]",
+              "outputFolderName": "chenling1022_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/cloudy3/ip.git",
+                "repoName": "ip",
+                "organization": "cloudy3",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "cloudy3/ip[master]",
+              "outputFolderName": "cloudy3_ip_master"
             }
           ],
           "errorSet": [],
