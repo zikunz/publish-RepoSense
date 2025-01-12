@@ -62,8 +62,8 @@ jobs:
         # Run RepoSense with debug output
         java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
           --config ./configs \
-          --since 01/01/2021 \
-          --until 31/12/2023 \
+          --since 11/01/2021 \
+          --until 10/06/2021 \
           --formats java --formats md --formats txt \
           --timezone UTC+08 \
           --output reposense-report \
