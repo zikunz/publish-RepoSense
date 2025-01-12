@@ -160,14 +160,58 @@ jobs:
             },
             {
               "location": {
-                "location": "https://github.com/nus-cs2103-AY2425S1/ip.git",
+                "location": "https://github.com/jiangqx0225/ip.git",
                 "repoName": "ip",
-                "organization": "nus-cs2103-AY2425S1",
+                "organization": "jiangqx0225",
                 "domainName": "github"
               },
               "branch": "master",
-              "displayName": "nus-cs2103-AY2425S1/ip[master]",
-              "outputFolderName": "nus-cs2103-AY2425S1_ip_master"
+              "displayName": "jiangqx0225/ip[master]",
+              "outputFolderName": "jiangqx0225_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/beaniestanley/ip.git",
+                "repoName": "ip",
+                "organization": "beaniestanley",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "beaniestanley/ip[master]",
+              "outputFolderName": "beaniestanley_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/cswbibibi/ip.git",
+                "repoName": "ip",
+                "organization": "cswbibibi",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "cswbibibi/ip[master]",
+              "outputFolderName": "cswbibibi_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/fangxinjia0203/ip.git",
+                "repoName": "ip",
+                "organization": "fangxinjia0203",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "fangxinjia0203/ip[master]",
+              "outputFolderName": "fangxinjia0203_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/RainyCodeWizard/ip.git",
+                "repoName": "ip",
+                "organization": "RainyCodeWizard",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "RainyCodeWizard/ip[master]",
+              "outputFolderName": "RainyCodeWizard_ip_master"
             }
           ],
           "errorSet": [],
