@@ -122,33 +122,72 @@ jobs:
         cd ..
         
         # Create summary.json with correct types
-        NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-        GEN_TIME=$(date +%s%N | cut -b1-13)
+        NOW=$(date -u +"%a %b %d %H:%M:%S %Y UTC+08:00")
         echo '{
-          "reportGeneratedTime": "'$NOW'",
-          "reportGenerationTime": "'$GEN_TIME'",
-          "reportTitle": "CS2103DE Software Engineering iP Code Dashboard",
           "repoSenseVersion": "2.8",
+          "reportGeneratedTime": "'$NOW'",
+          "reportGenerationTime": "0.1 second(s)",
           "zoneId": "UTC+08:00",
+          "reportTitle": "CS2103DE Software Engineering iP Code Dashboard",
           "repos": [
             {
-              "location": "https://github.com/zikunz/chatbot.git",
+              "location": {
+                "location": "https://github.com/zikunz/chatbot.git",
+                "repoName": "chatbot",
+                "organization": "zikunz",
+                "domainName": "github"
+              },
               "branch": "master",
-              "displayName": "chatbot"
+              "displayName": "zikunz/chatbot[master]",
+              "outputFolderName": "zikunz_chatbot_master"
             },
             {
-              "location": "https://github.com/Cocokkkk/ip.git",
+              "location": {
+                "location": "https://github.com/Cocokkkk/ip.git",
+                "repoName": "ip",
+                "organization": "Cocokkkk",
+                "domainName": "github"
+              },
               "branch": "master",
-              "displayName": "ip"
+              "displayName": "Cocokkkk/ip[master]",
+              "outputFolderName": "Cocokkkk_ip_master"
             },
             {
-              "location": "https://github.com/nus-cs2103-AY2425S1/ip.git",
+              "location": {
+                "location": "https://github.com/nus-cs2103-AY2425S1/ip.git",
+                "repoName": "ip",
+                "organization": "nus-cs2103-AY2425S1",
+                "domainName": "github"
+              },
               "branch": "master",
-              "displayName": "ip"
+              "displayName": "nus-cs2103-AY2425S1/ip[master]",
+              "outputFolderName": "nus-cs2103-AY2425S1_ip_master"
             }
           ],
           "errorSet": [],
-          "errorList": []
+          "sinceDate": "2000-01-01",
+          "untilDate": "2024-12-31",
+          "isSinceDateProvided": true,
+          "isUntilDateProvided": true,
+          "supportedDomainUrlMap": {
+            "NOT_RECOGNIZED": {
+              "BRANCH": "",
+              "REPO_URL": "UNSUPPORTED",
+              "BASE_URL": "UNSUPPORTED",
+              "HISTORY_PATH": "",
+              "COMMIT_PATH": "",
+              "BLAME_PATH": ""
+            },
+            "github": {
+              "BRANCH": "tree/$BRANCH",
+              "REPO_URL": "https://github.com/$ORGANIZATION/$REPO_NAME/",
+              "BASE_URL": "https://github.com/",
+              "HISTORY_PATH": "commits/$BRANCH/$FILE_PATH",
+              "COMMIT_PATH": "commit/$COMMIT_HASH",
+              "BLAME_PATH": "blame/$BRANCH/$FILE_PATH"
+            }
+          },
+          "isAuthorshipAnalyzed": false
         }' > deploy/summary.json
     
     - name: List deployment files
