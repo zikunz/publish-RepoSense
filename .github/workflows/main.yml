@@ -33,13 +33,35 @@ jobs:
         chmod +x get-reposense.py
         chmod +x run.sh
     
+    - name: Create report directory
+      run: mkdir -p reposense-report
+    
+    - name: Download RepoSense
+      run: ./get-reposense.py --tag v2.8 --overwrite
+    
+    - name: Show Java version
+      run: java -version
+    
     - name: Generate report
-      run: bash ./run.sh
+      run: |
+        set -x  # Enable debug output
+        java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
+          --config ./configs \
+          --since 01/01/2020 \
+          --until 31/12/2024 \
+          --formats "java md txt" \
+          --timezone UTC+08 \
+          --view
     
     - name: List generated files
-      run: ls -la reposense-report/
+      run: |
+        pwd
+        ls -la
+        echo "=== RepoSense Report Directory ==="
+        ls -la reposense-report/ || echo "Report directory is empty or not created"
     
     - name: Deploy GitHub pages
+      if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
