@@ -65,7 +65,8 @@ jobs:
           --formats java --formats md --formats txt \
           --timezone UTC+08 \
           --output reposense-report \
-          --assets assets
+          --assets assets \
+          --title "CS2103DE Software Engineering iP Code Dashboard"
         
         # Show report directory contents
         echo "=== Report Directory After Generation ==="
@@ -116,11 +117,8 @@ jobs:
         zip -r ../deploy/archive.zip . || echo "Warning: Could not create archive"
         cd ..
         
-        # Create summary with custom title
-        REPORT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-        REPO_VERSION=$(java -jar RepoSense.jar --version | grep -oP 'RepoSense version \K[0-9.]+' || echo "2.8")
-        GEN_TIME=$(date +%s%N | cut -b1-13)  # Current time in milliseconds
-        echo "{\"reportGeneratedTime\":\"$REPORT_TIME\",\"reportGenerationTime\":\"$GEN_TIME\",\"reportTitle\":\"CS2103DE Software Engineering iP Code Dashboard\",\"repoSenseVersion\":\"$REPO_VERSION\"}" > deploy/summary.json
+        # Copy the RepoSense-generated summary.json
+        cp reposense-report/summary.json deploy/summary.json
     
     - name: List deployment files
       run: |
