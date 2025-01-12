@@ -29,8 +29,28 @@ jobs:
         chmod +x get-reposense.py
         chmod +x run.sh
     
+    - name: Download RepoSense
+      run: ./get-reposense.py --release --overwrite
+    
     - name: Generate report
-      run: bash ./run.sh
+      run: |
+        mkdir -p reposense-report
+        java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
+          --config ./configs \
+          --since 01/01/2020 \
+          --until 31/12/2024 \
+          --formats "java md txt" \
+          --timezone UTC+08 \
+          --output ./reposense-report
+    
+    - name: Check report generation
+      run: |
+        echo "=== RepoSense Report Contents ==="
+        ls -la reposense-report/
+        if [ ! -d "reposense-report" ] || [ -z "$(ls -A reposense-report)" ]; then
+          echo "Error: Report directory is empty or not created"
+          exit 1
+        fi
     
     - name: Prepare deployment
       run: |
@@ -38,18 +58,27 @@ jobs:
         mkdir -p deploy
         
         # Copy required files
-        cp -r reposense-report/* deploy/
+        cp -r reposense-report/* deploy/ || echo "Warning: No report files to copy"
         cp -r fonts js deploy/
-        cp .nojekyll favicon.ico index.html summary.json title.md deploy/
+        cp .nojekyll favicon.ico index.html title.md deploy/
         
         # Create logs directory
         mkdir -p deploy/reposense-logs
-        cp reposense-report/reposense.log deploy/reposense-logs/response.log.0 || true
+        if [ -f "reposense-report/reposense.log" ]; then
+          cp reposense-report/reposense.log deploy/reposense-logs/response.log.0
+        else
+          echo "No log file found" > deploy/reposense-logs/response.log.0
+        fi
         
         # Create archive
         cd reposense-report
-        zip -r ../deploy/archive.zip .
+        zip -r ../deploy/archive.zip . || echo "Warning: Could not create archive"
         cd ..
+        
+        # Create empty summary if needed
+        if [ ! -f "deploy/summary.json" ]; then
+          echo '{"reportGeneratedTime":"","reportGenerationTime":0,"reportTitle":"RepoSense Report"}' > deploy/summary.json
+        fi
     
     - name: List deployment files
       run: |
