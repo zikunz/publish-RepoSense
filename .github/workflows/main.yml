@@ -29,46 +29,40 @@ jobs:
         chmod +x get-reposense.py
         chmod +x run.sh
     
-    - name: Create report directory
-      run: mkdir -p reposense-report
-    
-    - name: Download RepoSense
-      run: ./get-reposense.py --release --overwrite
-    
-    - name: Show Java version
-      run: java -version
-    
     - name: Generate report
-      run: |
-        set -x  # Enable debug output
-        java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
-          --config ./configs \
-          --since 01/01/2020 \
-          --until 31/12/2024 \
-          --formats "java md txt" \
-          --timezone UTC+08 \
-          --output ./reposense-report
+      run: bash ./run.sh
     
-    - name: Copy frontend files
+    - name: Prepare deployment
       run: |
-        cp -r frontend/* reposense-report/ || echo "No frontend files to copy"
-        touch reposense-report/.nojekyll
+        # Create deployment directory
+        mkdir -p deploy
+        
+        # Copy required files
+        cp -r reposense-report/* deploy/
+        cp -r fonts js deploy/
+        cp .nojekyll favicon.ico index.html summary.json title.md deploy/
+        
+        # Create logs directory
+        mkdir -p deploy/reposense-logs
+        cp reposense-report/reposense.log deploy/reposense-logs/response.log.0 || true
+        
+        # Create archive
+        cd reposense-report
+        zip -r ../deploy/archive.zip .
+        cd ..
     
-    - name: List generated files
+    - name: List deployment files
       run: |
-        pwd
-        ls -la
-        echo "=== RepoSense Report Directory ==="
-        ls -la reposense-report/ || echo "Report directory is empty or not created"
-        echo "=== RepoSense Report Contents ==="
-        find reposense-report -type f
+        echo "=== Deployment Directory Structure ==="
+        ls -la deploy/
+        find deploy -type f
     
     - name: Deploy GitHub pages
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./reposense-report
+        publish_dir: ./deploy
         force_orphan: true
         enable_jekyll: false
         user_name: 'github-actions[bot]'
