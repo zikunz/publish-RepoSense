@@ -37,7 +37,7 @@ jobs:
       run: mkdir -p reposense-report
     
     - name: Download RepoSense
-      run: ./get-reposense.py --tag v2.8 --overwrite
+      run: ./get-reposense.py --release --overwrite
     
     - name: Show Java version
       run: java -version

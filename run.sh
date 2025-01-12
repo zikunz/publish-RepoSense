@@ -4,7 +4,7 @@
 mkdir -p reposense-report
 
 # Downloads a specific version of RepoSense.jar of your choice from our repository
-./get-reposense.py --tag v2.8 --overwrite
+./get-reposense.py --release --overwrite
 
 # Show Java version
 java -version
