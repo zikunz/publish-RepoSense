@@ -52,11 +52,12 @@ jobs:
         # Run RepoSense with debug output
         java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
           --config ./configs \
-          --since 01/01/2020 \
+          --since 01/01/2000 \
           --until 31/12/2024 \
           --formats java --formats md --formats txt \
           --timezone UTC+08 \
-          --output reposense-report
+          --output reposense-report \
+          --assets ./assets
         
         # Show report directory contents
         echo "=== Report Directory After Generation ==="
@@ -91,7 +92,7 @@ jobs:
         
         # Copy required files
         cp -r reposense-report/* deploy/ || echo "Warning: No report files to copy"
-        cp -r fonts js deploy/
+        cp -r fonts js assets deploy/
         cp .nojekyll favicon.ico index.html title.md deploy/
         
         # Create logs directory
@@ -107,10 +108,8 @@ jobs:
         zip -r ../deploy/archive.zip . || echo "Warning: Could not create archive"
         cd ..
         
-        # Create empty summary if needed
-        if [ ! -f "deploy/summary.json" ]; then
-          echo '{"reportGeneratedTime":"","reportGenerationTime":0,"reportTitle":"RepoSense Report"}' > deploy/summary.json
-        fi
+        # Create summary with custom title
+        echo '{"reportGeneratedTime":"","reportGenerationTime":0,"reportTitle":"CS2103DE Software Engineering iP Code Dashboard"}' > deploy/summary.json
     
     - name: List deployment files
       run: |
