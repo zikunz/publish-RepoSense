@@ -130,6 +130,24 @@ jobs:
           "reportTitle": "CS2103DE Software Engineering iP Code Dashboard",
           "repoSenseVersion": "2.8",
           "zoneId": "UTC+08:00",
+          "repos": [
+            {
+              "location": "https://github.com/zikunz/chatbot.git",
+              "branch": "master",
+              "displayName": "chatbot"
+            },
+            {
+              "location": "https://github.com/Cocokkkk/ip.git",
+              "branch": "master",
+              "displayName": "ip"
+            },
+            {
+              "location": "https://github.com/nus-cs2103-AY2425S1/ip.git",
+              "branch": "master",
+              "displayName": "ip"
+            }
+          ],
+          "errorSet": [],
           "errorList": []
         }' > deploy/summary.json
     
