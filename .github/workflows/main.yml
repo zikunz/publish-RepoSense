@@ -65,8 +65,12 @@ jobs:
           --formats java --formats md --formats txt \
           --timezone UTC+08 \
           --output reposense-report \
-          --assets assets \
-          --title "CS2103DE Software Engineering iP Code Dashboard"
+          --assets assets
+        
+        # Update the title in summary.json
+        if [ -f "reposense-report/summary.json" ]; then
+          sed -i 's/"reportTitle":"[^"]*"/"reportTitle":"CS2103DE Software Engineering iP Code Dashboard"/g' reposense-report/summary.json
+        fi
         
         # Show report directory contents
         echo "=== Report Directory After Generation ==="
