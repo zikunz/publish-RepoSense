@@ -34,7 +34,6 @@ jobs:
         mkdir -p assets/images
         cp title.md assets/
         cp favicon.ico assets/
-        cp assets/images/ece_logo.png assets/images/
     
     - name: Show workspace
       run: |
