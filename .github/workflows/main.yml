@@ -216,7 +216,7 @@ jobs:
           ],
           "errorSet": [],
           "sinceDate": "2021-01-11",
-          "untilDate": "2023-06-10",
+          "untilDate": "2021-06-10",
           "isSinceDateProvided": true,
           "isUntilDateProvided": true,
           "supportedDomainUrlMap": {
