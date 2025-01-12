@@ -67,7 +67,7 @@ jobs:
         java -version
 
         # Run RepoSense with debug output
-        java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar --config ./configs --since 11/01/2021 --until 13/01/2025 --formats java,md,txt --timezone UTC+08 --output reposense-report --assets assets
+        java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar --config ./configs --since 11/01/2021 --until 13/01/2025 --formats java md txt --timezone UTC+08 --output reposense-report --assets assets
         
         # Update the title in summary.json
         if [ -f "reposense-report/summary.json" ]; then
