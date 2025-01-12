@@ -29,19 +29,39 @@ jobs:
         chmod +x get-reposense.py
         chmod +x run.sh
     
+    - name: Show workspace
+      run: |
+        pwd
+        ls -la
+        echo "=== Config Directory ==="
+        ls -la configs/
+    
     - name: Download RepoSense
-      run: ./get-reposense.py --release --overwrite
+      run: |
+        ./get-reposense.py --release --overwrite
+        ls -la RepoSense.jar
     
     - name: Generate report
       run: |
+        set -x  # Enable debug output
         mkdir -p reposense-report
+        
+        # Show Java version
+        java -version
+        
+        # Run RepoSense with debug output
         java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
           --config ./configs \
           --since 01/01/2020 \
           --until 31/12/2024 \
           --formats "java md txt" \
           --timezone UTC+08 \
-          --output ./reposense-report
+          --output ./reposense-report \
+          --view
+        
+        # Show report directory contents
+        echo "=== Report Directory After Generation ==="
+        ls -la reposense-report/
     
     - name: Check report generation
       run: |
@@ -49,6 +69,13 @@ jobs:
         ls -la reposense-report/
         if [ ! -d "reposense-report" ] || [ -z "$(ls -A reposense-report)" ]; then
           echo "Error: Report directory is empty or not created"
+          echo "=== Current Directory ==="
+          pwd
+          ls -la
+          echo "=== Java Version ==="
+          java -version
+          echo "=== RepoSense.jar ==="
+          ls -la RepoSense.jar
           exit 1
         fi
     
@@ -71,7 +98,7 @@ jobs:
         fi
         
         # Create archive
-        cd reposense-report
+        cd reposense-report || exit 1
         zip -r ../deploy/archive.zip . || echo "Warning: Could not create archive"
         cd ..
         
