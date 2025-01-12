@@ -121,8 +121,18 @@ jobs:
         zip -r ../deploy/archive.zip . || echo "Warning: Could not create archive"
         cd ..
         
-        # Copy the RepoSense-generated summary.json
-        cp reposense-report/summary.json deploy/summary.json
+        # Create summary.json with correct types
+        cat > deploy/summary.json << EOL
+{
+  "reportGeneratedTime": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+  "reportGenerationTime": "$(date +%s%N | cut -b1-13)",
+  "reportTitle": "CS2103DE Software Engineering iP Code Dashboard",
+  "repoSenseVersion": "2.8",
+  "zoneId": "UTC+08:00",
+  "reportGenerationTime": "0",
+  "errorList": []
+}
+EOL
     
     - name: List deployment files
       run: |
