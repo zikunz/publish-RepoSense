@@ -60,7 +60,7 @@ jobs:
         # Run RepoSense with debug output
         java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
           --config ./configs \
-          --since 01/01/2000 \
+          --since 01/01/2023 \
           --until 31/12/2024 \
           --formats java --formats md --formats txt \
           --timezone UTC+08 \
@@ -165,7 +165,7 @@ jobs:
             }
           ],
           "errorSet": [],
-          "sinceDate": "2000-01-01",
+          "sinceDate": "2023-01-01",
           "untilDate": "2024-12-31",
           "isSinceDateProvided": true,
           "isUntilDateProvided": true,
