@@ -58,12 +58,12 @@ jobs:
         
         # Show Java version
         java -version
-        
+
         # Run RepoSense with debug output
         java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
           --config ./configs \
-          --since 01/01/2019 \
-          --until 31/12/2024 \
+          --since 01/01/2022 \
+          --until 31/12/2022 \
           --formats java --formats md --formats txt \
           --timezone UTC+08 \
           --output reposense-report \
@@ -109,6 +109,10 @@ jobs:
         cp -r reposense-report/* deploy/ || echo "Warning: No report files to copy"
         cp -r fonts js deploy/
         cp .nojekyll favicon.ico index.html title.md deploy/
+        
+        # Copy assets including logo
+        mkdir -p deploy/images
+        cp -r assets/images/* deploy/images/
         
         # Create logs directory
         mkdir -p deploy/reposense-logs
@@ -167,8 +171,8 @@ jobs:
             }
           ],
           "errorSet": [],
-          "sinceDate": "2019-01-01",
-          "untilDate": "2024-12-31",
+          "sinceDate": "2022-01-01",
+          "untilDate": "2022-12-31",
           "isSinceDateProvided": true,
           "isUntilDateProvided": true,
           "supportedDomainUrlMap": {
