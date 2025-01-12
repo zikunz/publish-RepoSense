@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - master
-# For scheduled deployment with Cron Jobs.
-## Examples of cron schedule expressions:
-### '0 * * * *': hourly
-### '0 0 * * *': daily
-### '0 0 1 * *': monthly
-#   schedule:
-#     - cron:  '0 0 * * *'
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
@@ -51,7 +47,12 @@ jobs:
           --until 31/12/2024 \
           --formats "java md txt" \
           --timezone UTC+08 \
-          --view
+          --output ./reposense-report
+    
+    - name: Copy frontend files
+      run: |
+        cp -r frontend/* reposense-report/ || echo "No frontend files to copy"
+        touch reposense-report/.nojekyll
     
     - name: List generated files
       run: |
@@ -59,6 +60,8 @@ jobs:
         ls -la
         echo "=== RepoSense Report Directory ==="
         ls -la reposense-report/ || echo "Report directory is empty or not created"
+        echo "=== RepoSense Report Contents ==="
+        find reposense-report -type f
     
     - name: Deploy GitHub pages
       if: success()
@@ -67,6 +70,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./reposense-report
         force_orphan: true
+        enable_jekyll: false
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
         commit_message: 'docs: update RepoSense report'

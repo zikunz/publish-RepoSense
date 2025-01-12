@@ -17,8 +17,14 @@ java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
     --until 31/12/2024 \
     --formats "java md txt" \
     --timezone UTC+08 \
-    --view
+    --output ./reposense-report
+
+# Copy frontend files and create .nojekyll
+cp -r frontend/* reposense-report/ || echo "No frontend files to copy"
+touch reposense-report/.nojekyll
 
 # List generated files
 echo "=== RepoSense Report Directory ==="
 ls -la reposense-report/
+echo "=== RepoSense Report Contents ==="
+find reposense-report -type f
