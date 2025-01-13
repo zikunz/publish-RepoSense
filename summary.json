@@ -1,0 +1,143 @@
+{
+  "repoSenseVersion": "2.8",
+  "reportGeneratedTime": "Mon Jan 13 02:40:43 2025 UTC+08:00",
+  "reportGenerationTime": "0.1 second(s)",
+  "zoneId": "UTC+08:00",
+  "reportTitle": "CS2103DE Software Engineering iP Code Dashboard",
+  "repos": [
+    {
+      "location": {
+        "location": "https://github.com/zikunz/chatbot.git",
+        "repoName": "chatbot",
+        "organization": "zikunz",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "zikunz/chatbot[master]",
+      "outputFolderName": "zikunz_chatbot_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/Cocokkkk/ip.git",
+        "repoName": "ip",
+        "organization": "Cocokkkk",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "Cocokkkk/ip[master]",
+      "outputFolderName": "Cocokkkk_ip_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/jiangqx0225/ip.git",
+        "repoName": "ip",
+        "organization": "jiangqx0225",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "jiangqx0225/ip[master]",
+      "outputFolderName": "jiangqx0225_ip_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/beaniestanley/ip.git",
+        "repoName": "ip",
+        "organization": "beaniestanley",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "beaniestanley/ip[master]",
+      "outputFolderName": "beaniestanley_ip_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/cswbibibi/ip.git",
+        "repoName": "ip",
+        "organization": "cswbibibi",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "cswbibibi/ip[master]",
+      "outputFolderName": "cswbibibi_ip_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/fangxinjia0203/ip.git",
+        "repoName": "ip",
+        "organization": "fangxinjia0203",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "fangxinjia0203/ip[master]",
+      "outputFolderName": "fangxinjia0203_ip_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/RainyCodeWizard/ip.git",
+        "repoName": "ip",
+        "organization": "RainyCodeWizard",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "RainyCodeWizard/ip[master]",
+      "outputFolderName": "RainyCodeWizard_ip_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/8kdesign/ip.git",
+        "repoName": "ip",
+        "organization": "8kdesign",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "8kdesign/ip[master]",
+      "outputFolderName": "8kdesign_ip_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/chenling1022/ip.git",
+        "repoName": "ip",
+        "organization": "chenling1022",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "chenling1022/ip[master]",
+      "outputFolderName": "chenling1022_ip_master"
+    },
+    {
+      "location": {
+        "location": "https://github.com/cloudy3/ip.git",
+        "repoName": "ip",
+        "organization": "cloudy3",
+        "domainName": "github"
+      },
+      "branch": "master",
+      "displayName": "cloudy3/ip[master]",
+      "outputFolderName": "cloudy3_ip_master"
+    }
+  ],
+  "errorSet": [],
+  "sinceDate": "2021-01-11",
+  "untilDate": "2025-01-13",
+  "isSinceDateProvided": true,
+  "isUntilDateProvided": true,
+  "supportedDomainUrlMap": {
+    "NOT_RECOGNIZED": {
+      "BRANCH": "",
+      "REPO_URL": "UNSUPPORTED",
+      "BASE_URL": "UNSUPPORTED",
+      "HISTORY_PATH": "",
+      "COMMIT_PATH": "",
+      "BLAME_PATH": ""
+    },
+    "github": {
+      "BRANCH": "tree/$BRANCH",
+      "REPO_URL": "https://github.com/$ORGANIZATION/$REPO_NAME/",
+      "BASE_URL": "https://github.com/",
+      "HISTORY_PATH": "commits/$BRANCH/$FILE_PATH",
+      "COMMIT_PATH": "commit/$COMMIT_HASH",
+      "BLAME_PATH": "blame/$BRANCH/$FILE_PATH"
+    }
+  },
+  "isAuthorshipAnalyzed": false
+}

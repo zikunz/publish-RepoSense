@@ -1,0 +1,246 @@
+Jan 13, 2025 2:40:40 AM reposense.system.LogsManager addFileHandler
+INFO: Log temp folder has been successfully created
+Jan 13, 2025 2:40:40 AM reposense.parser.CsvParser validateHeader
+INFO: Parsed header of CSV file, repo-config.csv, and recognized columns: Ignore Standalone Config,  Repository's Location,  Branch,  File formats,  Ignore Glob List,  Find Previous Authors
+Jan 13, 2025 2:40:41 AM reposense.parser.CsvParser validateHeader
+INFO: Parsed header of CSV file, author-config.csv, and recognized columns: Author's Emails,  Repository's Location,  Branch,  Author's Git Host ID,  Author's Display Name,  Ignore Glob List,  Author's Git Author Name
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias zikunz found. The alias will belong to the last author - zikunz
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias cocokkkk found. The alias will belong to the last author - Cocokkkk
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias 951553394 found. The alias will belong to the last author - 951553394
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias beaniestanley found. The alias will belong to the last author - beaniestanley
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias cswbibibi found. The alias will belong to the last author - cswbibibi
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias fangxinjia0203 found. The alias will belong to the last author - fangxinjia0203
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias hussain1998 found. The alias will belong to the last author - hussain1998
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias 8kdesign found. The alias will belong to the last author - 8kdesign
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias chenling1022 found. The alias will belong to the last author - chenling1022
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias cloudy3 found. The alias will belong to the last author - cloudy3
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias zikunz found. The alias will belong to the last author - zikunz
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias cocokkkk found. The alias will belong to the last author - Cocokkkk
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias 951553394 found. The alias will belong to the last author - 951553394
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias beaniestanley found. The alias will belong to the last author - beaniestanley
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias cswbibibi found. The alias will belong to the last author - cswbibibi
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias fangxinjia0203 found. The alias will belong to the last author - fangxinjia0203
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias hussain1998 found. The alias will belong to the last author - hussain1998
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias 8kdesign found. The alias will belong to the last author - 8kdesign
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias chenling1022 found. The alias will belong to the last author - chenling1022
+Jan 13, 2025 2:40:41 AM reposense.model.AuthorConfiguration checkDuplicateAliases
+WARNING: Duplicate alias cloudy3 found. The alias will belong to the last author - cloudy3
+Jan 13, 2025 2:40:41 AM reposense.git.GitConfig getGlobalGitLfsConfig
+WARNING: Could not get global git lfs config
+java.lang.RuntimeException: reposense.system.CommandRunnerProcessException: Error returned from command git config --global --list on path . :
+fatal: unable to read config file '/home/runner/.gitconfig': No such file or directory
+
+	at reposense.system.CommandRunner.runCommand(CommandRunner.java:23)
+	at reposense.git.GitConfig.getGitGlobalConfig(GitConfig.java:90)
+	at reposense.git.GitConfig.getGlobalGitLfsConfig(GitConfig.java:44)
+	at reposense.RepoSense.main(RepoSense.java:69)
+Caused by: reposense.system.CommandRunnerProcessException: Error returned from command git config --global --list on path . :
+fatal: unable to read config file '/home/runner/.gitconfig': No such file or directory
+
+	at reposense.system.CommandRunnerProcess.waitForProcess(CommandRunnerProcess.java:46)
+	at reposense.system.CommandRunner.runCommand(CommandRunner.java:21)
+	... 3 more
+
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/jiangqx0225/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/RainyCodeWizard/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/beaniestanley/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/chenling1022/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/beaniestanley/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/chenling1022/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/RainyCodeWizard/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/jiangqx0225/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/jiangqx0225/ip.git completed!
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/cloudy3/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/cloudy3/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [1/10] Analyzing https://github.com/jiangqx0225/ip.git (master)...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/chenling1022/ip.git completed!
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/RainyCodeWizard/ip.git completed!
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/cswbibibi/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [2/10] Analyzing https://github.com/chenling1022/ip.git (master)...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/beaniestanley/ip.git completed!
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/cswbibibi/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/8kdesign/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [3/10] Analyzing https://github.com/beaniestanley/ip.git (master)...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/Cocokkkk/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [4/10] Analyzing https://github.com/RainyCodeWizard/ip.git (master)...
+Jan 13, 2025 2:40:41 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/jiangqx0225/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:41 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/jiangqx0225/ip.git (master)...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/Cocokkkk/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/8kdesign/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/chenling1022/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:41 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/chenling1022/ip.git (master)...
+Jan 13, 2025 2:40:41 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/beaniestanley/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:41 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/beaniestanley/ip.git (master)...
+Jan 13, 2025 2:40:41 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/RainyCodeWizard/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:41 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/RainyCodeWizard/ip.git (master)...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/cloudy3/ip.git completed!
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/fangxinjia0203/ip.git...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/fangxinjia0203/ip.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/cswbibibi/ip.git completed!
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/Cocokkkk/ip.git completed!
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/8kdesign/ip.git completed!
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner spawnCloneProcess
+INFO: Cloning in parallel from https://github.com/zikunz/chatbot.git...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Waiting for cloning of https://github.com/zikunz/chatbot.git to complete...
+Jan 13, 2025 2:40:41 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/fangxinjia0203/ip.git completed!
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/beaniestanley/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/beaniestanley/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.RepoCloner waitForCloneProcess
+INFO: Cloning of https://github.com/zikunz/chatbot.git completed!
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/beaniestanley/ip.git (master) completed!
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [5/10] Analyzing https://github.com/cloudy3/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/cloudy3/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:42 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/cloudy3/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/chenling1022/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/chenling1022/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/chenling1022/ip.git (master) completed!
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/RainyCodeWizard/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [6/10] Analyzing https://github.com/cswbibibi/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/jiangqx0225/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/RainyCodeWizard/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/RainyCodeWizard/ip.git (master) completed!
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/jiangqx0225/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/cswbibibi/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:42 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/cswbibibi/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [7/10] Analyzing https://github.com/Cocokkkk/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/jiangqx0225/ip.git (master) completed!
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/Cocokkkk/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:42 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/Cocokkkk/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [8/10] Analyzing https://github.com/8kdesign/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/8kdesign/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:42 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/8kdesign/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/cswbibibi/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/cswbibibi/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/cswbibibi/ip.git (master) completed!
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [9/10] Analyzing https://github.com/fangxinjia0203/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/cloudy3/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/fangxinjia0203/ip.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:42 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/fangxinjia0203/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/cloudy3/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/Cocokkkk/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/cloudy3/ip.git (master) completed!
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepos
+INFO: [10/10] Analyzing https://github.com/zikunz/chatbot.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/Cocokkkk/ip.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator updateRepoConfig
+INFO: https://github.com/zikunz/chatbot.git (master) does not contain a standalone config file.
+Jan 13, 2025 2:40:42 AM reposense.authorship.FileInfoExtractor extractTextFileInfos
+INFO: Extracting relevant file info from https://github.com/zikunz/chatbot.git (master)...
+Jan 13, 2025 2:40:42 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/Cocokkkk/ip.git (master) completed!
+Jan 13, 2025 2:40:43 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/8kdesign/ip.git (master)...
+Jan 13, 2025 2:40:43 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/8kdesign/ip.git (master)...
+Jan 13, 2025 2:40:43 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/8kdesign/ip.git (master) completed!
+Jan 13, 2025 2:40:43 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/fangxinjia0203/ip.git (master)...
+Jan 13, 2025 2:40:43 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/fangxinjia0203/ip.git (master)...
+Jan 13, 2025 2:40:43 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/fangxinjia0203/ip.git (master) completed!
+Jan 13, 2025 2:40:43 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+INFO: Extracting commits info for https://github.com/zikunz/chatbot.git (master)...
+Jan 13, 2025 2:40:43 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+INFO: Analyzing commits info for https://github.com/zikunz/chatbot.git (master)...
+Jan 13, 2025 2:40:43 AM reposense.report.ReportGenerator analyzeRepo
+INFO: Analysis of https://github.com/zikunz/chatbot.git (master) completed!
+Jan 13, 2025 2:40:43 AM reposense.report.ReportGenerator generateReposReport
+INFO: The report is generated at /home/runner/work/publish-RepoSense/publish-RepoSense/reposense-report/reposense-report
+Jan 13, 2025 2:40:43 AM reposense.RepoSense main
+INFO: Elapsed processing time: 2.50 second(s)
