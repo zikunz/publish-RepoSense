@@ -1,19 +1,30 @@
 #!/bin/bash
 
-# Downloads a specific version of RepoSense.jar of your choice from our repository
-## Examples of supported options:
-### ./get-reposense.py --release               # Gets the latest release (Stable)
-### ./get-reposense.py --master                # Gets the latest master (Beta)
-### ./get-reposense.py --tag v1.6.1            # Gets a specific version
-### ./get-reposense.py --latest v1.6           # Gets the latest version with the given tag prefix e.g. v1.6.1
-### ./get-reposense.py --commit abc123         # Gets a specific commit
-### ./get-reposense.py --release --overwrite   # Overwrite RepoSense.jar, if exists, with the latest release
+# Create report directory
+mkdir -p reposense-report
 
-./get-reposense.py --release
+# Downloads a specific version of RepoSense.jar of your choice from our repository
+./get-reposense.py --release --overwrite
+
+# Show Java version
+java -version
 
 # Executes RepoSense
-# Do not change the default output folder name (reposense-report)
-## Examples of other valid options; For more, please view the user guide
-### java -jar RepoSense.jar --repos https://github.com/reposense/RepoSense.git
+set -x  # Enable debug output
+java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar \
+    --config ./configs \
+    --since 01/01/2020 \
+    --until 31/12/2024 \
+    --formats "java md txt" \
+    --timezone UTC+08 \
+    --output ./reposense-report
 
-java -jar RepoSense.jar --config ./configs
+# Copy frontend files and create .nojekyll
+cp -r frontend/* reposense-report/ || echo "No frontend files to copy"
+touch reposense-report/.nojekyll
+
+# List generated files
+echo "=== RepoSense Report Directory ==="
+ls -la reposense-report/
+echo "=== RepoSense Report Contents ==="
+find reposense-report -type f

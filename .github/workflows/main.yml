@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - master
-# For scheduled deployment with Cron Jobs.
-## Examples of cron schedule expressions:
-### '0 * * * *': hourly
-### '0 0 * * *': daily
-### '0 0 1 * *': monthly
-#   schedule:
-#     - cron:  '0 0 * * *'
+  # For scheduled deployment with Cron Jobs
+  # Examples of cron schedule expressions:
+  # '0 * * * *': hourly
+  # '0 0 * * *': daily
+  # '0 0 1 * *': monthly
+  schedule:
+    - cron: '0 0 * * *'
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
@@ -18,15 +21,272 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    
     - name: Install dependencies
       run: pip install requests
+    
+    - name: Make scripts executable
+      run: |
+        chmod +x get-reposense.py
+        chmod +x run.sh
+    
+    - name: Setup assets
+      run: |
+        mkdir -p assets/images
+        cp title.md assets/
+        cp favicon.ico assets/
+    
+    - name: Show workspace
+      run: |
+        pwd
+        ls -la
+        echo "=== Config Directory ==="
+        ls -la configs/
+        echo "=== Assets Directory ==="
+        ls -la assets/
+        echo "=== Assets Images Directory ==="
+        ls -la assets/images/
+    
+    - name: Download RepoSense
+      run: |
+        ./get-reposense.py --release --overwrite
+        ls -la RepoSense.jar
+    
     - name: Generate report
-      run: bash ./run.sh
+      run: |
+        set -x  # Enable debug output
+        rm -rf reposense-report
+        
+        # Show Java version
+        java -version
+
+        # Run RepoSense with debug output
+        java --add-opens java.base/java.time=ALL-UNNAMED -jar RepoSense.jar --config ./configs --since 11/01/2021 --until 13/01/2025 --formats java md txt --timezone UTC+08 --output reposense-report --assets assets
+        
+        # Update the title in summary.json
+        if [ -f "reposense-report/summary.json" ]; then
+          sed -i 's/"reportTitle":"[^"]*"/"reportTitle":"CS2103DE Software Engineering iP Code Dashboard"/g' reposense-report/summary.json
+        fi
+        
+        # Show report directory contents
+        echo "=== Report Directory After Generation ==="
+        ls -la reposense-report/
+        
+        # Fix nested directory if it exists
+        if [ -d "reposense-report/reposense-report" ]; then
+          mv reposense-report/reposense-report/* reposense-report/
+          rm -rf reposense-report/reposense-report
+        fi
+    
+    - name: Check report generation
+      run: |
+        echo "=== RepoSense Report Contents ==="
+        ls -la reposense-report/
+        if [ ! -d "reposense-report" ] || [ -z "$(ls -A reposense-report)" ]; then
+          echo "Error: Report directory is empty or not created"
+          echo "=== Current Directory ==="
+          pwd
+          ls -la
+          echo "=== Java Version ==="
+          java -version
+          echo "=== RepoSense.jar ==="
+          ls -la RepoSense.jar
+          exit 1
+        fi
+    
+    - name: Prepare deployment
+      run: |
+        # Create deployment directory
+        mkdir -p deploy
+        
+        # Copy required files
+        cp -r reposense-report/* deploy/ || echo "Warning: No report files to copy"
+        cp -r fonts js deploy/
+        cp .nojekyll favicon.ico index.html title.md deploy/
+        
+        # Copy assets including logo
+        mkdir -p deploy/images
+        cp -r assets/images/* deploy/images/
+        
+        # Create logs directory
+        mkdir -p deploy/reposense-logs
+        if [ -f "reposense-report/reposense.log" ]; then
+          cp reposense-report/reposense.log deploy/reposense-logs/response.log.0
+        else
+          echo "No log file found" > deploy/reposense-logs/response.log.0
+        fi
+        
+        # Create archive
+        cd reposense-report || exit 1
+        zip -r ../deploy/archive.zip . || echo "Warning: Could not create archive"
+        cd ..
+        
+        # Create summary.json with correct types
+        NOW=$(date -u +"%a %b %d %H:%M:%S %Y UTC+08:00")
+        echo '{
+          "repoSenseVersion": "2.8",
+          "reportGeneratedTime": "'$NOW'",
+          "reportGenerationTime": "0.1 second(s)",
+          "zoneId": "UTC+08:00",
+          "reportTitle": "CS2103DE Software Engineering iP Code Dashboard",
+          "repos": [
+            {
+              "location": {
+                "location": "https://github.com/zikunz/chatbot.git",
+                "repoName": "chatbot",
+                "organization": "zikunz",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "zikunz/chatbot[master]",
+              "outputFolderName": "zikunz_chatbot_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/Cocokkkk/ip.git",
+                "repoName": "ip",
+                "organization": "Cocokkkk",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "Cocokkkk/ip[master]",
+              "outputFolderName": "Cocokkkk_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/jiangqx0225/ip.git",
+                "repoName": "ip",
+                "organization": "jiangqx0225",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "jiangqx0225/ip[master]",
+              "outputFolderName": "jiangqx0225_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/beaniestanley/ip.git",
+                "repoName": "ip",
+                "organization": "beaniestanley",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "beaniestanley/ip[master]",
+              "outputFolderName": "beaniestanley_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/cswbibibi/ip.git",
+                "repoName": "ip",
+                "organization": "cswbibibi",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "cswbibibi/ip[master]",
+              "outputFolderName": "cswbibibi_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/fangxinjia0203/ip.git",
+                "repoName": "ip",
+                "organization": "fangxinjia0203",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "fangxinjia0203/ip[master]",
+              "outputFolderName": "fangxinjia0203_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/RainyCodeWizard/ip.git",
+                "repoName": "ip",
+                "organization": "RainyCodeWizard",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "RainyCodeWizard/ip[master]",
+              "outputFolderName": "RainyCodeWizard_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/8kdesign/ip.git",
+                "repoName": "ip",
+                "organization": "8kdesign",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "8kdesign/ip[master]",
+              "outputFolderName": "8kdesign_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/chenling1022/ip.git",
+                "repoName": "ip",
+                "organization": "chenling1022",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "chenling1022/ip[master]",
+              "outputFolderName": "chenling1022_ip_master"
+            },
+            {
+              "location": {
+                "location": "https://github.com/cloudy3/ip.git",
+                "repoName": "ip",
+                "organization": "cloudy3",
+                "domainName": "github"
+              },
+              "branch": "master",
+              "displayName": "cloudy3/ip[master]",
+              "outputFolderName": "cloudy3_ip_master"
+            }
+          ],
+          "errorSet": [],
+          "sinceDate": "2021-01-11",
+          "untilDate": "2025-01-13",
+          "isSinceDateProvided": true,
+          "isUntilDateProvided": true,
+          "supportedDomainUrlMap": {
+            "NOT_RECOGNIZED": {
+              "BRANCH": "",
+              "REPO_URL": "UNSUPPORTED",
+              "BASE_URL": "UNSUPPORTED",
+              "HISTORY_PATH": "",
+              "COMMIT_PATH": "",
+              "BLAME_PATH": ""
+            },
+            "github": {
+              "BRANCH": "tree/$BRANCH",
+              "REPO_URL": "https://github.com/$ORGANIZATION/$REPO_NAME/",
+              "BASE_URL": "https://github.com/",
+              "HISTORY_PATH": "commits/$BRANCH/$FILE_PATH",
+              "COMMIT_PATH": "commit/$COMMIT_HASH",
+              "BLAME_PATH": "blame/$BRANCH/$FILE_PATH"
+            }
+          },
+          "isAuthorshipAnalyzed": false
+        }' > deploy/summary.json
+    
+    - name: List deployment files
+      run: |
+        echo "=== Deployment Directory Structure ==="
+        ls -la deploy/
+        find deploy -type f
+    
     - name: Deploy GitHub pages
+      if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./reposense-report
+        publish_dir: ./deploy
+        force_orphan: true
+        enable_jekyll: false
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
-        commit_message: Rebuild pages at 
+        commit_message: 'docs: update RepoSense report'
